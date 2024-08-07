@@ -34,7 +34,7 @@ import snowflake.snowpark as snowpark
 connection_parameters = {
  "user": "git",
  "password": "Snowflake@123",
- "account": "yyb35722",
+ "account": "lhb20287",
  "role": "ACCOUNTADMIN",
  "warehouse": "FEEDBACK_WH",
  "database": "FEEDBACK_DATA",
