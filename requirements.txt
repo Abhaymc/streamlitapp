@@ -1,0 +1,32 @@
+import streamlit as st
+from snowflake.snowpark.context import get_active_session
+import sys
+import streamlit.components.v1 as components
+import pickle as pkl
+import pandas as pd
+import os,sys
+import lime
+import joblib
+import lime.lime_tabular
+from snowflake.snowpark.functions import *
+from sklearn.decomposition import PCA
+from scipy.stats import chi2_contingency
+
+from joblib import load
+from pycaret.classification import setup, create_model, save_model, interpret_model, load_model, predict_model
+from scipy import stats
+import numpy as np
+import seaborn as sns
+import plotly.graph_objs as go
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+import plotly.express as px
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FormatStrFormatter
+import plotly.graph_objects as go
+from matplotlib.ticker import FuncFormatter
+import math
+
+from fuzzywuzzy import process
+import base64
+
+import snowflake.snowpark as snowpark
