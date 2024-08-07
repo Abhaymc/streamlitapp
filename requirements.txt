@@ -1,32 +1,14 @@
-import streamlit as st
-from snowflake.snowpark.context import get_active_session
-import sys
-import streamlit.components.v1 as components
-import pickle as pkl
-import pandas as pd
-import os,sys
-import lime
-import joblib
-import lime.lime_tabular
-from snowflake.snowpark.functions import *
-from sklearn.decomposition import PCA
-from scipy.stats import chi2_contingency
-
-from joblib import load
-from pycaret.classification import setup, create_model, save_model, interpret_model, load_model, predict_model
-from scipy import stats
-import numpy as np
-import seaborn as sns
-import plotly.graph_objs as go
-from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-import plotly.express as px
-import matplotlib.pyplot as plt
-from matplotlib.ticker import FormatStrFormatter
-import plotly.graph_objects as go
-from matplotlib.ticker import FuncFormatter
-import math
-
-from fuzzywuzzy import process
-import base64
-
-import snowflake.snowpark as snowpark
+streamlit
+snowflake-connector-python==3.11.0
+snowflake-snowpark-python==1.20.0
+pandas==1.3.5
+numpy
+lime
+joblib==1.2.0
+pycaret==3.0.2
+scikit-learn==1.1.1
+scipy==1.10.0
+seaborn==0.13.2
+plotly==5.23.0
+matplotlib
+fuzzywuzzy
