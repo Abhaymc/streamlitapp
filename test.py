@@ -34,7 +34,7 @@ connection_parameters = {
  "password": "Snowflake@123",
  "account": "lhb20287",
  "role": "ACCOUNTADMIN",
- "warehouse": "FEEDBACK_WH",
+ "warehouse": "COMPUTE_WH",
  "database": "FEEDBACK_DATA",
  "schema": "FEEDBACK_SCH",
  }
