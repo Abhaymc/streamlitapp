@@ -755,12 +755,12 @@ def main():
 
                 
                 if x_column in ( 'GENDER','CUSTOMER_TYPE','TYPE_OF_TRAVEL', 'CLASS','FOOD_AND_DRINK','INFLIGHT_ENTERTAINMENT','ON_BOARD_SERVICE', 'LEG_ROOM_SERVICE',
-'BAGGAGE_HANDLING', 'CHECKIN_SERVICE', 'INFLIGHT_SERVICE', 'CLEANLINESS','FLIGHT_DISTANCE','INFLIGHT_WIFI_SERVICE','DEPARTURE_ARRIVAL_TIME_CONVENIENT','EASE_OF_ONLINE_BOOKING','GATE_LOCATION',
+'BAGGAGE_HANDLING', 'CHECKIN_SERVICE', 'INFLIGHT_SERVICE', 'CLEANLINESS','INFLIGHT_WIFI_SERVICE','DEPARTURE_ARRIVAL_TIME_CONVENIENT','EASE_OF_ONLINE_BOOKING','GATE_LOCATION',
 'ONLINE_BOARDING','SEAT_COMFORT'):
                     fig = px.bar(df_g, x=x_column, y="Count",color='SATISFIED_CAT', text=df_g['Percentage'].apply(lambda x: '{0:1.2f}%'.format(x)))
                     st.plotly_chart(fig)
 
-                if x_column in ('AGE','DEPARTURE_DELAY_IN_MINUTES','ARRIVAL_DELAY_IN_MINUTES'):
+                if x_column in ('AGE','DEPARTURE_DELAY_IN_MINUTES','ARRIVAL_DELAY_IN_MINUTES','FLIGHT_DISTANCE'):
                     fig, ax = plt.subplots()
                     
                     bars=sns.histplot(data=df_top, x=x_column,hue="SATISFIED_CAT", bins=10,multiple='stack')
