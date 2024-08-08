@@ -10,8 +10,6 @@ import lime
 import joblib
 import lime.lime_tabular
 from snowflake.snowpark.functions import *
-from sklearn.decomposition import PCA
-from scipy.stats import chi2_contingency
 
 from joblib import load
 from pycaret.classification import setup, create_model, save_model, interpret_model, load_model, predict_model
@@ -237,11 +235,11 @@ class EDA_Dataframe_Analysis():
 
 
     def qqplot(self,x):
-        return pd.qqplot(x, line ='45')
+        return sm.qqplot(x, line ='45')
 
 
     def Anderson_test(self,a):
-        return pd.anderson(a)
+        return anderson(a)
 
     def PCA(self,x):
         pca =PCA(n_components=8)
@@ -756,12 +754,12 @@ def main():
        # 'DAYSINCELASTORDER', 'CASHBACKAMOUNT']
 
                 
-                if x_column in ( 'GENDER','CUSTOMER_TYPE','TYPE_OF_TRAVEL', 'CLASS'):
+                if x_column in ( 'GENDER','CUSTOMER_TYPE','TYPE_OF_TRAVEL', 'CLASS','FOOD_AND_DRINK'):
                     fig = px.bar(df_g, x=x_column, y="Count",color='SATISFIED_CAT', text=df_g['Percentage'].apply(lambda x: '{0:1.2f}%'.format(x)))
                     st.plotly_chart(fig)
 
                 if x_column in ('AGE','FLIGHT_DISTANCE','INFLIGHT_WIFI_SERVICE','DEPARTURE_ARRIVAL_TIME_CONVENIENT','EASE_OF_ONLINE_BOOKING','GATE_LOCATION',
-'FOOD_AND_DRINK','ONLINE_BOARDING','SEAT_COMFORT','INFLIGHT_ENTERTAINMENT','ON_BOARD_SERVICE', 'LEG_ROOM_SERVICE',
+'ONLINE_BOARDING','SEAT_COMFORT','INFLIGHT_ENTERTAINMENT','ON_BOARD_SERVICE', 'LEG_ROOM_SERVICE',
 'BAGGAGE_HANDLING', 'CHECKIN_SERVICE', 'INFLIGHT_SERVICE', 'CLEANLINESS','DEPARTURE_DELAY_IN_MINUTES','ARRIVAL_DELAY_IN_MINUTES'):
                     fig, ax = plt.subplots()
                     
@@ -938,31 +936,7 @@ Customer satisfaction varied by age:
 
         
                 
-        #if st.checkbox("Local Explanability"):
-            #st.set_option('deprecation.showPyplotGlobalUse', False)
-           # table_pd = session.sql('select * from FEEDBACK_DATA.FEEDBACK_SCH.FEEDBACK_TEST_DATA').to_pandas()
-           # choice = st.selectbox("Select CUSTOMER ID  to view local explanability", [109956,92488,22479,89113,73652,20998,88560,112302,9651,58520])
 
-            #one = table_pd.iloc[1:2].drop(['CUSTOMERID','CHURN'],axis=1)
-            #one = table_pd[table_pd.ID==choice].drop(['ID','SATISFACTION'],axis=1)
-            #st.dataframe(one)
-            #st.write(one)
-           # instance_to_predict = model[:-1].transform(one)
-    
-           # df = session.sql('select * from FEEDBACK_DATA.FEEDBACK_SCH.FEEDBACK_DATA_CLEAN').to_pandas()
-           # X = model[:-1].transform(df).drop(['ID','SATISFACTION'], axis=1)
-           # X_featurenames = X.columns.tolist()
-           # explainer = lime.lime_tabular.LimeTabularExplainer(X.values,
-                                # feature_names=X_featurenames, 
-                                # class_names=['NOT SATISFIED','SATISFIED'],
-                               #  discretize_continuous = True,
-                               #  verbose=True, mode='classification')
-            
-          #  exp = explainer.explain_instance(instance_to_predict.values.flatten(), model.named_steps["trained_model"].predict_proba,labels=(1,))
-    
-            #st.subheader('Local Explanability of Prediction')
-            #exp.as_pyplot_figure()
-            #st.pyplot()
 
             
         # if st.checkbox("Local Explanability"):
